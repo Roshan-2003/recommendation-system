@@ -1,0 +1,110 @@
+[
+  {
+    "_id": "food_1",
+    "food_items": "Oatmeal with Blueberries & Almonds",
+    "Calories": 320,
+    "category": "breakfast",
+    "protein": "11g",
+    "carbs": "54g",
+    "fat": "8g"
+  },
+  {
+    "_id": "food_2",
+    "food_items": "Avocado Toast with Poached Eggs",
+    "Calories": 380,
+    "category": "breakfast",
+    "protein": "15g",
+    "carbs": "32g",
+    "fat": "22g"
+  },
+  {
+    "_id": "food_3",
+    "food_items": "Greek Yogurt Parfait with Mixed Berries",
+    "Calories": 260,
+    "category": "breakfast",
+    "protein": "18g",
+    "carbs": "34g",
+    "fat": "5g"
+  },
+  {
+    "_id": "food_4",
+    "food_items": "Spinach & Mushroom Egg White Omelette",
+    "Calories": 240,
+    "category": "breakfast",
+    "protein": "22g",
+    "carbs": "8g",
+    "fat": "12g"
+  },
+  {
+    "_id": "food_5",
+    "food_items": "Grilled Chicken Quinoa Bowl",
+    "Calories": 520,
+    "category": "lunch",
+    "protein": "42g",
+    "carbs": "48g",
+    "fat": "16g"
+  },
+  {
+    "_id": "food_6",
+    "food_items": "Paneer Tikka with Brown Rice Salad",
+    "Calories": 480,
+    "category": "lunch",
+    "protein": "24g",
+    "carbs": "50g",
+    "fat": "20g"
+  },
+  {
+    "_id": "food_7",
+    "food_items": "Mediterranean Chickpea & Olive Salad",
+    "Calories": 410,
+    "category": "lunch",
+    "protein": "16g",
+    "carbs": "52g",
+    "fat": "17g"
+  },
+  {
+    "_id": "food_8",
+    "food_items": "Lentil Soup (Dal) with Steamed Brown Rice",
+    "Calories": 450,
+    "category": "lunch",
+    "protein": "18g",
+    "carbs": "72g",
+    "fat": "8g"
+  },
+  {
+    "_id": "food_9",
+    "food_items": "Baked Herb Salmon with Steamed Asparagus",
+    "Calories": 540,
+    "category": "dinner",
+    "protein": "44g",
+    "carbs": "12g",
+    "fat": "34g"
+  },
+  {
+    "_id": "food_10",
+    "food_items": "Stir-Fried Tofu with Broccoli & Garlic",
+    "Calories": 390,
+    "category": "dinner",
+    "protein": "26g",
+    "carbs": "28g",
+    "fat": "21g"
+  },
+  {
+    "_id": "food_11",
+    "food_items": "Grilled Chicken Breast with Sweet Potato",
+    "Calories": 490,
+    "category": "dinner",
+    "protein": "46g",
+    "carbs": "44g",
+    "fat": "12g"
+  },
+  {
+    "_id": "food_12",
+    "food_items": "Roasted Vegetable Couscous Salad",
+    "Calories": 370,
+    "category": "dinner",
+    "protein": "12g",
+    "carbs": "60g",
+    "fat": "10g"
+  }
+]
