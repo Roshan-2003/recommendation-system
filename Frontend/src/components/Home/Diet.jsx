@@ -10,8 +10,7 @@ import dietBlog3 from '../../assets/diet_blog3.jpg';
 import dietBlog4 from '../../assets/diet_blog4.jpg';
 import dietBlog5 from '../../assets/diet_blog5.jpg';
 import dietBlog6 from '../../assets/diet_blog6.jpg';
-
-const backendUrl = import.meta.env.VITE_APP_BACKEND_URL;
+import { backendConfigurationError, backendUrl } from '../../config/backend';
 const Diet = () => {
     const [activeFilter, setActiveFilter] = useState('all');
     const [filteredFoodItems, setFilteredFoodItems] = useState([]);
@@ -40,6 +39,10 @@ const Diet = () => {
 
     const fetchUserData = async (userId) => {
         try {
+            if (!backendUrl) {
+                console.error(backendConfigurationError);
+                return;
+            }
             if (!userId) return;
             const id = typeof userId === 'object' && userId !== null ? (userId._id || userId.userId) : userId;
             const response = await fetch(`${backendUrl}/users/${id}`);
@@ -85,6 +88,10 @@ const Diet = () => {
 
     const fetchFoodItems = async () => {
         try {
+            if (!backendUrl) {
+                console.error(backendConfigurationError);
+                return;
+            }
 
             const foodItemsUrl = `${backendUrl}/all-food-item`;
             const response = await fetch(foodItemsUrl);

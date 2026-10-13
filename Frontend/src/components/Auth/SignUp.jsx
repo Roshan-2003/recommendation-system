@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import background from '../../assets/bg.png';
 import { Link, useNavigate } from "react-router-dom";
-const backendUrl = import.meta.env.VITE_APP_BACKEND_URL;
+import { backendConfigurationError, backendUrl } from '../../config/backend';
 
 const SignUp = () => {
     const [username, setUsername] = useState("");
@@ -23,6 +23,11 @@ const SignUp = () => {
 
         if (!email.trim() || !password) {
             setError("Email and password are required.");
+            return;
+        }
+
+        if (!backendUrl) {
+            setError(backendConfigurationError);
             return;
         }
 

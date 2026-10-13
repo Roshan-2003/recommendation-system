@@ -1,7 +1,7 @@
 import { useState } from "react";
 import background from '../../assets/bg.png'
 import { Link, useNavigate } from "react-router-dom";
-const backendUrl = import.meta.env.VITE_APP_BACKEND_URL;
+import { backendConfigurationError, backendUrl } from '../../config/backend';
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,7 +15,7 @@ export default function Login() {
         setError("");
 
         if (!backendUrl) {
-            setError("Login is not configured. Set VITE_APP_BACKEND_URL and restart the frontend.");
+            setError(backendConfigurationError);
             return;
         }
 
