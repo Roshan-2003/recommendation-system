@@ -12,10 +12,9 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const JWT_SECRET = process.env.JWT_SECRET || 'diet_recommendation_jwt_secret_key_2024';
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/diet_recommendation';
+const JWT_SECRET = process.env.JWT_SECRET ;
+const MONGO_URI = process.env.MONGO_URI ;
 
-// Ensure data folder exists for file fallback
 const DATA_DIR = path.join(__dirname, 'data');
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -25,7 +24,6 @@ const USERS_FILE = path.join(DATA_DIR, 'users.json');
 const FOOD_FILE = path.join(DATA_DIR, 'food_items.json');
 const INITIAL_FOODS_FILE = path.join(DATA_DIR, 'initialFoods.json');
 
-// Helper to read JSON file safely
 function readJson(filePath, defaultValue = []) {
   try {
     if (!fs.existsSync(filePath)) {
@@ -39,7 +37,6 @@ function readJson(filePath, defaultValue = []) {
   }
 }
 
-// Helper to write JSON file safely
 function writeJson(filePath, data) {
   try {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
@@ -48,7 +45,6 @@ function writeJson(filePath, data) {
   }
 }
 
-// Initialize food items file if needed
 let seedFoods = [];
 if (fs.existsSync(INITIAL_FOODS_FILE)) {
   seedFoods = readJson(INITIAL_FOODS_FILE, []);
@@ -57,14 +53,11 @@ if (!fs.existsSync(FOOD_FILE)) {
   writeJson(FOOD_FILE, seedFoods);
 }
 
-// Middleware
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
-// Track DB mode (mongo vs file)
 let isMongoConnected = false;
 
-// Mongoose Models
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -90,14 +83,12 @@ const foodSchema = new mongoose.Schema({
 const MongoUser = mongoose.model('User', userSchema);
 const MongoFood = mongoose.model('FoodItem', foodSchema);
 
-// Connect to MongoDB with fast timeout so app never hangs
 mongoose.connect(MONGO_URI, {
   serverSelectionTimeoutMS: 2000
 }).then(async () => {
   isMongoConnected = true;
   console.log('✅ [Database] Connected successfully to MongoDB:', MONGO_URI);
 
-  // Seed MongoDB foods if empty
   try {
     const count = await MongoFood.countDocuments();
     if (count === 0 && seedFoods.length > 0) {
@@ -116,7 +107,6 @@ mongoose.connect(MONGO_URI, {
   console.log('⚡ [Database] Using high-performance local JSON storage in backend/data/. No external setup required!');
 });
 
-// Helper for BMR and Calorie calculation
 function calculateNutrition(weight, height, age, gender, activityLevel) {
   const w = parseFloat(weight) || 70;
   const h = parseFloat(height) || 170;
@@ -145,7 +135,6 @@ function calculateNutrition(weight, height, age, gender, activityLevel) {
   return { bmr, dailyCalories };
 }
 
-// ---------------- ROUTES ---------------- //
 
 // Health Check
 app.get('/', (req, res) => {
