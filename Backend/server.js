@@ -12,8 +12,8 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const JWT_SECRET = process.env.JWT_SECRET ;
-const MONGO_URI = process.env.MONGO_URI ;
+const JWT_SECRET = process.env.JWT_SECRET || 'diet_recommendation_jwt_secret_key_2024';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/diet_recommendation';
 
 const DATA_DIR = path.join(__dirname, 'data');
 if (!fs.existsSync(DATA_DIR)) {

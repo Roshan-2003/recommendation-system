@@ -11,8 +11,8 @@ function isValidBackendUrl(value) {
     }
 }
 
-const productionOrigin = import.meta.env.PROD ? window.location.origin : '';
-export const backendUrl = [configuredBackendUrl, productionOrigin].find(isValidBackendUrl) || '';
+const DEFAULT_BACKEND_URL = 'https://recommendation-system-j2jt.vercel.app';
+export const backendUrl = [configuredBackendUrl, DEFAULT_BACKEND_URL].find(isValidBackendUrl) || '';
 
 export const backendConfigurationError =
     'Backend API is not configured. Set VITE_APP_BACKEND_URL to the deployed backend API URL in your hosting settings, then redeploy.';
